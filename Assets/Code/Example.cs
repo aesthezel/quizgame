@@ -12,6 +12,7 @@ using System.Collections;
 
     Ellos pueden ser obtenidos por numeros o por su nombre.
 */
+
 public enum ExampleStatus
 {
     Performing,
@@ -147,5 +148,4 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
         yield return new WaitForSeconds(delayResultTime);
         confirmButton.interactable = true;
     }
-
 }

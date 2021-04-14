@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LevelSelector.unity
     guid: 5a9979ed6e47c0547b5afa44746ec2be
+  - enabled: 1
+    path: Assets/Scenes/Level_Mortadela.unity
+    guid: c8623bf9e4c10db45bba12bb932a237f
   m_configObjects: {}

@@ -12,6 +12,24 @@ EditorBuildSettings:
     path: Assets/Scenes/Selector.unity
     guid: 5a9979ed6e47c0547b5afa44746ec2be
   - enabled: 1
-    path: Assets/Scenes/LevelS/Level_Carlos.unity
+    path: Assets/Scenes/Levels/Level_Carlos.unity
     guid: cd6290c1f5a97a34e940992c7876e202
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Alex.unity
+    guid: 8a7f4d61e0b428f458ddcf4a29bdece9
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Alex_2.unity
+    guid: 2f0145a1208f843428368ad238b37bb5
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Cristian.unity
+    guid: f7820be8fa4b2af4bb9b41d5a1cb0685
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Cristian_2.unity
+    guid: 4d38bcdb69011894c975e7c028bbb5c7
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Mortadela.unity
+    guid: c8623bf9e4c10db45bba12bb932a237f
+  - enabled: 1
+    path: Assets/Scenes/QuestionExample.unity
+    guid: bcf73d6fb889d3b45b58870e202cdd45
   m_configObjects: {}

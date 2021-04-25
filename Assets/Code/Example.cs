@@ -36,7 +36,7 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
     [SerializeField] private string[] answers;
     
     private bool[] questionsSolved;                 // Estos elementos no contienen [SerializeField] y son privados debido a que no queremos mostrarlos al inspector u otro componente.
-    private int whatQuestionNumber = 0;
+    private int whatQuestionNumber = 0; // Contador o localizador de indice de preguntas / respuestas
     
     private void Start()                            // Metodo Start() proviene de de MonoBehaviour y se ejecuta cuando este componente este en un GameObject y en una escena, y el juego este ejecutandose.
     {

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Selector.unity
     guid: 5a9979ed6e47c0547b5afa44746ec2be
   - enabled: 1
-    path: Assets/Scenes/Levels/Level_Carlos.unity
+    path: Assets/Scenes/Levels/LevelCarlos/MainMenu.unity
     guid: cd6290c1f5a97a34e940992c7876e202
   - enabled: 1
     path: Assets/Scenes/Levels/Level_Alex.unity

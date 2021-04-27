@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu]
-public class QA_OBJ : ScriptableObject 
+public class QA_OBJ : ScriptableObject
 {
    public string[] preguntas;
    public string[] respuestas;

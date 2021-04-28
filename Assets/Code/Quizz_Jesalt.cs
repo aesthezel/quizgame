@@ -11,6 +11,7 @@ public enum Status
     solved,
     end
 }
+
 public class Quizz_Jesalt : MonoBehaviour
 {
 
@@ -28,40 +29,30 @@ public class Quizz_Jesalt : MonoBehaviour
     private bool[] solveQuestion;
 
     private int Ran = 0;
-    public void Event()
+    public void CheckAnswer()
     {
-        
-
         if (TextField.text.Equals(Answer[Ran]))
         {
             ResultText.text = ("Correcto");
             Cuadro.GetComponent<SpriteRenderer>().color = Color.green;
             //ResultText.color = Color.green;
-            StartCoroutine("Wait");
+            StartCoroutine("ResetSquareColor");
             generateQuestion();
         }
         else
         {
             ResultText.text = ("Incorrecto");
-            StartCoroutine("Wait");
             Cuadro.GetComponent<SpriteRenderer>().color = Color.red;
             //ResultText.color = Color.red;
+            StartCoroutine("ResetSquareColor");
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-
         solveQuestion = new bool[Question.Length];
         generateQuestion();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     private Status RandomNumber()
     {
@@ -70,7 +61,6 @@ public class Quizz_Jesalt : MonoBehaviour
         {
             solveQuestion[Ran] = true;
             return Status.Resolve;
-          
         }
 
         int cont = 0;
@@ -99,10 +89,7 @@ public class Quizz_Jesalt : MonoBehaviour
             case Status.Resolve: QuestionText.text = Question[Ran]; break;
             case Status.solved: generateQuestion();  break;
             case Status.end: EndGame();  break;
-
         }
-
-        
     }
 
     private void EndGame()
@@ -111,8 +98,7 @@ public class Quizz_Jesalt : MonoBehaviour
         ResultText.text = ("Gracias por jugar");
     }
 
-
-    IEnumerator Wait()
+    IEnumerator ResetSquareColor()
     {
         yield return new WaitForSeconds(3);
         Cuadro.GetComponent<SpriteRenderer>().color = Color.white;

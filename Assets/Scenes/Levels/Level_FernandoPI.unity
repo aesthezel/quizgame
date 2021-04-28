@@ -448,20 +448,20 @@ MonoBehaviour:
   - "\xBFque se celebra en M\xE9xico el 5 de Mayo?"
   - "\xBFLa tierra es hueca?"
   - "\xBFde que color es un caballo blanco?"
-  - pregunta 4
-  - Pregunta 5
-  - Pregunta 5
-  - Pregunta 5
-  - Pregunta 5
+  - "\xBFcuales son los nombres de los teletubbies?"
+  - "\xBFcual es el nombre la asistente virtual de amazon?"
+  - Cual es el canal de youtube con mas suscriptores?
+  - "\xBFQuienes fueron los fundadores de roma? "
+  - "\xBFEn que lenguaje esta programado Minecraft?"
   answers:
   - La batalla de puebla
   - No
   - Blanco
-  - 4
-  - 5
-  - 5
-  - 5
-  - 5
+  - Tinky Winky, Dipsy, Po, y Laa-Laa
+  - Alexa
+  - Tseries
+  - Romulo y Remo
+  - Java
   lifeBar: {fileID: 1976966641}
   actualHealth: 100
   maxHealth: 100

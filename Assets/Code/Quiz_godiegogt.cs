@@ -37,7 +37,8 @@ public class Quiz_godiegogt : MonoBehaviour    //Aqui empieza nuestra clase Exam
     
     private bool[] questionsSolved;                 // Estos elementos no contienen [SerializeField] y son privados debido a que no queremos mostrarlos al inspector u otro componente.
     private int whatQuestionNumber = 0; // Contador o localizador de indice de preguntas / respuestas
-    private int score=0;
+    private int score = 0;
+
     private void Start()                            // Metodo Start() proviene de de MonoBehaviour y se ejecuta cuando este componente este en un GameObject y en una escena, y el juego este ejecutandose.
     {
         questionsSolved = new bool[questions.Length];   // Aqui estamos asignandole la misma cantidad de datos de las preguntas, es decir si hay 5 preguntas, tendremos aqui 5 valores bool inicializados en false (porque es su default).
@@ -110,7 +111,7 @@ public class Quiz_godiegogt : MonoBehaviour    //Aqui empieza nuestra clase Exam
         else
         {
             StartCoroutine("ShowResultByTime", "Incorrecto");   // Si no respondemos bien, nos estancamos hasta poder acertar.
-            score-=10;
+            score = Mathf.Max(0, score -= 10);
         }
         scoreText.text=score.ToString();
         answerField.text = "";  // Al finalizar de comprobar si es Correcto o Incorrecto vaciamos el texto del Input.
@@ -119,7 +120,7 @@ public class Quiz_godiegogt : MonoBehaviour    //Aqui empieza nuestra clase Exam
     private void EndGame()  // Cambiamos el texto de las preguntas y el resultado y mostramos los respectivos mensajes de Fin del juego.
     {
         questiontext.text = "Fin del juego";
-        answertext.text = "Ganaste";
+        answertext.text = "Ganaste con una puntuacion de " + score;
         answerField.interactable = false;       // Deshabilitamos el Input.
         confirmButton.interactable = false;     // Deshabilitamos el Button.
     }

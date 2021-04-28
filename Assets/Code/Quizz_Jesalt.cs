@@ -20,7 +20,8 @@ public class Quizz_Jesalt : MonoBehaviour
     public TMP_Text ResultText;
     public TMP_InputField TextField;
 
-    
+    public GameObject Cuadro;
+
 
     public string[] Question;
     public string[] Answer;
@@ -29,16 +30,22 @@ public class Quizz_Jesalt : MonoBehaviour
     private int Ran = 0;
     public void Event()
     {
-        if(TextField.text.Equals(Answer[Ran]))
+        
+
+        if (TextField.text.Equals(Answer[Ran]))
         {
             ResultText.text = ("Correcto");
-            ResultText.color = Color.green;
+            Cuadro.GetComponent<SpriteRenderer>().color = Color.green;
+            //ResultText.color = Color.green;
+            StartCoroutine("Wait");
             generateQuestion();
         }
         else
         {
             ResultText.text = ("Incorrecto");
-            ResultText.color = Color.red;
+            StartCoroutine("Wait");
+            Cuadro.GetComponent<SpriteRenderer>().color = Color.red;
+            //ResultText.color = Color.red;
         }
     }
     // Start is called before the first frame update
@@ -102,5 +109,12 @@ public class Quizz_Jesalt : MonoBehaviour
     {
         QuestionText.text = ("Game Over");
         ResultText.text = ("Gracias por jugar");
+    }
+
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        Cuadro.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

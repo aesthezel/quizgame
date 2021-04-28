@@ -240,7 +240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7871, y: 118.14}
+  m_AnchoredPosition: {x: 2.7871, y: 96}
   m_SizeDelta: {x: 2565.5742, y: 76.0033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &288847578
@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 84.9817, y: -376.59}
+  m_AnchoredPosition: {x: 35, y: -409}
   m_SizeDelta: {x: 423.1684, y: 384.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &442147937
@@ -1422,7 +1422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000023469, y: 280.88}
+  m_AnchoredPosition: {x: -0.00000023469, y: 364}
   m_SizeDelta: {x: 2560, y: 81.6056}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696164149
@@ -1630,11 +1630,21 @@ MonoBehaviour:
   questiontext: {fileID: 1696164149}
   answertext: {fileID: 288847578}
   answerField: {fileID: 575315004}
-  scoreText: {fileID: 0}
+  scoreText: {fileID: 1786537842}
   confirmButton: {fileID: 442147937}
   delayResultTime: 0
-  questions: []
-  answers: []
+  questions:
+  - "\xBFLa tierra es plana?"
+  - "\xBFDe donde sale el queso?"
+  - "\xBFCuantos litros de leche da la vaca ensuvida??"
+  - "\xBF2x2+2x0+2?"
+  - "\xBFMejor equipo del mundo?"
+  answers:
+  - No
+  - La leche
+  - Los mismos que en bajada
+  - 6
+  - "Cob\xE1n Imperial"
 --- !u!4 &1768556046
 Transform:
   m_ObjectHideFlags: 0
@@ -1683,7 +1693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 872.7544, y: 343.07}
+  m_AnchoredPosition: {x: 872.7544, y: 424.68}
   m_SizeDelta: {x: 228.8303, y: 83.9349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1786537842
@@ -1883,7 +1893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 872.7544, y: 427}
+  m_AnchoredPosition: {x: 872.7544, y: 499}
   m_SizeDelta: {x: 228.8303, y: 83.9349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900046534

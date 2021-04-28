@@ -14,7 +14,6 @@ End
 }
 
 
-
 public class Quiz_FernandoPI : MonoBehaviour
 {
     public QuizStates_FernandoPI quizState;
@@ -22,16 +21,16 @@ public class Quiz_FernandoPI : MonoBehaviour
     public TMP_Text resultText;
     public TMP_InputField answerField;
 
+    public Image Panel;
+
     public string[] questions;
     public string[] answers;
     private bool[] solvedQuestions;
     private int randomQuestionNumber;
-
     public Image lifeBar;
-
     public float actualHealth;
     public float maxHealth;
-    public TMP_Text lossText;
+    public int lives;
 
     public QuizStates_FernandoPI GetRandomNumber()
     {
@@ -42,6 +41,7 @@ public class Quiz_FernandoPI : MonoBehaviour
             solvedQuestions[randomQuestionNumber]= true;
             return QuizStates_FernandoPI.Resolving;
         }
+
         int countQuestion = 0;
         for (int i= 0; i < questions.Length; i++)
         {
@@ -56,6 +56,7 @@ public class Quiz_FernandoPI : MonoBehaviour
             return QuizStates_FernandoPI.End;
 
         }
+
         return QuizStates_FernandoPI.Solved;
     }
 
@@ -83,7 +84,6 @@ public class Quiz_FernandoPI : MonoBehaviour
         questionText.text = "No hay mas preguntas";
         resultText.text = "se acabo el juego";
         answerField.interactable = false;
-
     }
 
     public void ConfirmAnswer()
@@ -96,37 +96,34 @@ public class Quiz_FernandoPI : MonoBehaviour
         else
         {
             resultText.text = "Incorrecto";
-            actualHealth -= 16.666f;
+
+            float livesPorcent = maxHealth / lives;
+            actualHealth = Mathf.Max(0, actualHealth -= livesPorcent);
+            lifeBar.fillAmount = actualHealth / maxHealth;
+
+            gameOver();
         }
     }
+
     void Start()
     {
         solvedQuestions = new bool[questions.Length];
         GenerateQuestion();
     }
 
-    void Update()
-    {
-        lifeBar.fillAmount = actualHealth / maxHealth;
-        gameOver();
-    }
-
     private void gameOver()
     {
-        if(actualHealth <= 0)
+        if(actualHealth <= 0f)
         {
             questionText.text = "Haz perdido, intenta de nuevo c;";
             answerField.interactable = false;
-            if(Input.GetMouseButtonDown(0))
-            {
-                Restart();
-            }
             resultText.text = "Haz click para reiniciar";
 
+            Panel.raycastTarget = true;
         }
     }
 
-    private void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene("Level_FernandoPI");
     }

@@ -26,16 +26,24 @@ Material:
     m_Floats:
     - _ColorMask: 15
     - _CullMode: 0
+<<<<<<< HEAD
     - _FaceDilate: 0
+=======
+    - _FaceDilate: 0.58
+>>>>>>> f89bbab4a177812647dc1989a2aa8d38b25ad1e8
     - _GradientScale: 10
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
     - _OutlineSoftness: 0
+<<<<<<< HEAD
     - _OutlineWidth: 0.05
+=======
+    - _OutlineWidth: 0.3
+>>>>>>> f89bbab4a177812647dc1989a2aa8d38b25ad1e8
     - _PerspectiveFilter: 0.875
-    - _ScaleRatioA: 0.9
+    - _ScaleRatioA: 0.8430913
     - _ScaleRatioB: 1
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioC: 0.20925002
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

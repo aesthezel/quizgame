@@ -9,5 +9,4 @@ public class QA_OBJ : ScriptableObject
    public string[] preguntas;
    public string[] respuestas;
    public bool[] preguntasResueltas;
-  
 }

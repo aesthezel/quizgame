@@ -4,12 +4,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+// Finite State Machine
 public enum GameStatus
 {
     Performing,
     Solved,
     End
 }
+
+
 public class Richard_Quiz : MonoBehaviour
 {
     public QA_OBJ QA;
@@ -30,7 +33,6 @@ public class Richard_Quiz : MonoBehaviour
         textoResultado.text = "";
     }
 
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -41,7 +43,7 @@ public class Richard_Quiz : MonoBehaviour
 
     public void GeneratorQA()
     {
-        status = CheckQ();
+        status = CheckQ(); // 
         switch (status)
         {
             case GameStatus.Performing:
@@ -49,13 +51,11 @@ public class Richard_Quiz : MonoBehaviour
                 break;
 
             case GameStatus.Solved:
-
                 GeneratorQA();
                 break;
 
             case GameStatus.End:
                 EndGame();
-
                 break;
         }
     }
@@ -89,11 +89,12 @@ public class Richard_Quiz : MonoBehaviour
     private GameStatus CheckQ()
     {
         RandomInt = Random.Range(0, QA.preguntas.Length);
+
         if (QA.preguntasResueltas[RandomInt] == false)
         {
-            //QA.preguntasResueltas[RandomInt] = true;
             return GameStatus.Performing;
         }
+
         int questionsDone = 0;
         for (int i = 0; i < QA.preguntasResueltas.Length; i++)
         {

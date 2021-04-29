@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
-
-public enum Status
-{
-    Resolve,
-    solved,
-    end
-}
-
 public class Quizz_Jesalt : MonoBehaviour
 {
+    public enum Status
+    {
+        Resolve,
+        solved,
+        end
+    }
 
     public Status Quizz_Status;
 

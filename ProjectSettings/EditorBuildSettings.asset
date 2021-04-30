@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuestionExample.unity
     guid: bcf73d6fb889d3b45b58870e202cdd45
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_Mortadela2.unity
+    guid: 18aab5953a91b844d96901d28750f0ee
   m_configObjects: {}

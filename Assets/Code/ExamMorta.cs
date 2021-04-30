@@ -1,49 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using TMPro;
 
-/*
-    Esto es un enumerador es utilizado como un objeto que solo contiene datos que se pueden evaluar como estados.
-    
-    Aqui estamos evaluando 3 estados:
-    • Performing = 0
-    • Solved = 1
-    • End = 2
-
-    Ellos pueden ser obtenidos por numeros o por su nombre.
-*/
-
-public enum ExampleStatus
+public class ExamMorta : MonoBehaviour
 {
-    Performing,
-    Solved,
-    End
-}
+    public enum ExampleStatus
+    {
+        Performing,
+        Solved,
+        End
+    }
 
-public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
-{
     [Header("Set-up")]  // Un [Header("")] es un atributo que sirve para colocar un titulo en el inspector con el string que le pases en los parentesis.
                         // El [SerializeField] es un atributo que permite ver variables de acceso privado en el inspector.
     [SerializeField] private ExampleStatus status;  // Como ven aqui se esta adquiriendo una variable de tipo ExampleStatus que es nuestro enum de arriba.
-    [SerializeField] private Text questionText;     // Este componente Text es el texto de la UI y se adquiere con la libreria UnityEngine.UI al igual que InputField y Button.
-    [SerializeField] private Text resultText;
-    [SerializeField] private InputField inputAnswer;
+    [SerializeField] private TextMeshProUGUI questionText;     // Este componente Text es el texto de la UI y se adquiere con la libreria UnityEngine.UI al igual que InputField y Button.
+    [SerializeField] private TextMeshProUGUI resultText;
+    [SerializeField] private TMP_InputField inputAnswer;
     [SerializeField] private Button confirmButton;
     [SerializeField] private float delayResultTime;
 
     [Header("Database")]
     [SerializeField] private string[] questions;    // Aqui entramos a las Array (arreglos), es una variable que contiene multiples elementos del mismo tipo.
     [SerializeField] private string[] answers;
-    
+
     private bool[] questionsSolved;                 // Estos elementos no contienen [SerializeField] y son privados debido a que no queremos mostrarlos al inspector u otro componente.
     private int whatQuestionNumber = 0;
-    
-   
-    
+    [Header("ConfiBarra")]
+    public Image barradevida;
+    public float vidaActual;
+    public float vidaMaxima;
+
+
     private void Start()                            // Metodo Start() proviene de de MonoBehaviour y se ejecuta cuando este componente este en un GameObject y en una escena, y el juego este ejecutandose.
     {
         questionsSolved = new bool[questions.Length];   // Aqui estamos asignandole la misma cantidad de datos de las preguntas, es decir si hay 5 preguntas, tendremos aqui 5 valores bool inicializados en false (porque es su default).
         GenerateQuestion();
+        
+    }
+
+    private void Update()
+    {
+        barradevida.fillAmount = vidaActual / vidaMaxima;
     }
 
     private void GenerateQuestion()                 // Esta funcion genera una nueva pregunta cada vez que se solicita, pero a su vez verifica con otra funcion si la pregunta ya se contesto.
@@ -51,7 +51,7 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
         status = QuestionIsShowed();                // Solicitamos una pregunta aleatoria y verificamos si no ha sido contestada.
 
         // Con este switch podremos controlar los 3 estados del enum, los cuales podemos direccionar el codigo a 3 posibilidades. 
-        switch(status)
+        switch (status)
         {
             case ExampleStatus.Performing:  // Con Performing hacemos que se muestre la pregunta en la pantalla y el boton de confirmar se apague por unos segundos.
                 questionText.text = questions[whatQuestionNumber];
@@ -63,14 +63,14 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
             case ExampleStatus.End:         // Si el estado es End, ejecutamos el fin del juego.
                 EndGame();
                 break;
-        }      
+        }
     }
 
     private ExampleStatus QuestionIsShowed()        // Con esta funcion obtenemos el estado del juego verificando si una de las preguntas ha sido contestada exitosamente.
     {
         whatQuestionNumber = Random.Range(0, questions.Length); // A esta variable le asignamos un Random.Range(min, max) esta funcion lo que hace es conseguir un numero aleatorio desde minimo al maximo, y nuestro maximo es la cantidad de preguntas.
 
-        if(questionsSolved[whatQuestionNumber] == false)        // Aqui verificamos si la pregunta que accedemos con el numero aleatorio es "false" (osea no se ha preguntado).
+        if (questionsSolved[whatQuestionNumber] == false)        // Aqui verificamos si la pregunta que accedemos con el numero aleatorio es "false" (osea no se ha preguntado).
         {
             questionsSolved[whatQuestionNumber] = true;         // Le asignamos true porque no queremos mostrarla mas en el juego, pero si mandarla a ejecutarse en la UI.
             return ExampleStatus.Performing;                    // Este estado indicara que se ejecute esta pregunta en la UI y procedamos a contestarla.
@@ -79,14 +79,14 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
         int questionsDone = 0;
         for (int i = 0; i < questionsSolved.Length; i++)
         {
-            if(questionsSolved[i] == true)
+            if (questionsSolved[i] == true)
             {
                 questionsDone++;
             }
         }
 
         /*
-            ¿Que paso en las lineas anteriores?
+            �Que paso en las lineas anteriores?
 
             El entero que declaramos llamado questionsDone, solo nos servira dentro de nuestra funcion y lo usamos como contador de preguntas resueltas.
             Es asi que, utilizando un "for" iteramos segun la cantidad de preguntas que tenemos asignadas, gracias a questionsSolved.Length.
@@ -96,7 +96,7 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
             RECORDAR: que questionSolved es un array de bool, y esta construido segun la cantidad de preguntas que asignamos en el inspector.
         */
 
-        if(questionsDone == questionsSolved.Length) // Esto verifica si el contador anterior es igual al tamano de preguntas, si resulta que son iguales, suponemos que todas las preguntas se han contestado.
+        if (questionsDone == questionsSolved.Length) // Esto verifica si el contador anterior es igual al tamano de preguntas, si resulta que son iguales, suponemos que todas las preguntas se han contestado.
         {
             return ExampleStatus.End;   // Como ven aqui retornamos el valor de End, que supondria que el juego ha terminado, pues todas las preguntas han sido contestadas.
         }
@@ -106,14 +106,16 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
 
     public void ConfirmAnswer()     // Con esta funcion verificamos si lo que escribimos en el Input es igual a la respuesta de nuestra pregunta aleatoria.
     {
-        if(inputAnswer.text.ToLower() == answers[whatQuestionNumber].ToLower())
+        if (inputAnswer.text.ToLower() == answers[whatQuestionNumber].ToLower())
         {
             StartCoroutine("ShowResultByTime", "Correcto");     // Esto es una corrutina y sirve para ejecutar una funcion que se rije por un tiempo de ejecucion a parte, bueno para animaciones, contadores, otros...
+            vidaActual = vidaActual + 20;
             GenerateQuestion();                                 // Volvemos a solicitar otra pregunta.
         }
         else
         {
             StartCoroutine("ShowResultByTime", "Incorrecto");   // Si no respondemos bien, nos estancamos hasta poder acertar.
+            vidaActual = vidaActual - 20;
         }
 
         inputAnswer.text = "";  // Al finalizar de comprobar si es Correcto o Incorrecto vaciamos el texto del Input.
@@ -150,4 +152,8 @@ public class Example : MonoBehaviour    //Aqui empieza nuestra clase Example.
         yield return new WaitForSeconds(delayResultTime);
         confirmButton.interactable = true;
     }
+
+
+
+
 }
